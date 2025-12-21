@@ -1,6 +1,39 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Fan-Out Messaging, Failure Isolation, and DLQs
+
+Interview question:
+“An Order service uses a Fan-Out pattern (e.g., RabbitMQ exchange) to notify five microservices (Inventory, Billing, Logistics, Email, Analytics) about a new order. If one consumer (Inventory) is down at the time of notification, what happens to the message and to the other four services?”
+
+The Failing Answer (90% of Candidates)
+
+“The entire order fails and the message is lost.”
+
+This answer reveals monolithic thinking and a lack of understanding of distributed systems and resilience.
+
+What a Senior Backend Engineer Should Answer
+Failure Isolation Is the Key
+
+In a Fan-Out (broadcast) pattern, the failure of one consumer is isolated.
+Once the message is successfully published to the RabbitMQ exchange, each bound queue behaves independently.
+
+The four services that are healthy and correctly bound will receive and process the message normally, regardless of the Inventory service being down.
+
+What Happens to the ‘Lost’ Message
+
+The message intended for the Inventory service is not lost.
+It should be routed to the Dead Letter Queue (DLQ) associated with the Inventory consumer.
+
+The DLQ acts as a controlled failure buffer, ensuring that critical messages (e.g., inventory decrement or reservation) can be reprocessed later.
+
+Guaranteeing Consistency
+
+Senior responsibility goes beyond the message broker.
+You must ensure that eventual consistency is achieved:
+
+When the Inventory service comes back online, it must reprocess its DLQ to correctly apply the stock update or confirm the reservation, preserving inventory integrity.
+
 ## Preventing Overselling and Double Spending in Distributed Systems
 
 Interview question:

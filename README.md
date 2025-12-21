@@ -93,7 +93,7 @@ Enables safe implementation swapping
 
 Preserves Liskov Substitution by keeping interfaces focused and predictable
 
-Architectural Impac
+Architectural Impact
 
 ISP is not just about cleaner code—it is about software architecture and CI/CD.
 
@@ -106,6 +106,50 @@ Enable independent deployments
 Reduce blast radius of changes
 
 Improve system performance and scalability
+
+LSP - Liskov Substitution Principle 
+
+“Give a practical example in a digital payments system where you would apply the Liskov Substitution Principle (LSP), and explain why.”
+
+Many candidates freeze or give a purely theoretical answer.
+
+The Answer That Stands Out: LSP Connected to DDD and SOLID
+Common Problem
+
+You have a Billing Payments service that processes multiple payment methods:
+
+Boleto
+
+TED
+
+PIX
+
+Object-Oriented / LSP Solution
+
+Define a common abstraction, such as an interface or abstract class:
+
+PaymentMethod
+
+BoletoPayment
+
+TEDPayment
+
+PIXPayment
+
+The client system interacts only with PaymentMethod.
+Any concrete implementation can be substituted without changing the client code, and the process() behavior is always correct and predictable.
+
+The Architectural Insight
+
+This is not just an OOP exercise—it is software architecture.
+
+Guarantees resilience and scalability
+
+Enables safe extension when new payment methods are introduced
+
+Supports the Open/Closed Principle: new payment types are added without breaking existing code
+
+If a new payment method is introduced by the Central Bank tomorrow, you simply add a new implementation—no refactoring of existing logic is required.
 
 ## Database Sharding for Digital Accounts – Architecture and Risks
 

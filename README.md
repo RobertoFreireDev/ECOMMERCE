@@ -1,6 +1,37 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Using CQRS in Digital Account Systems
+
+Common interview question:
+“Would you use CQRS (Command Query Responsibility Segregation) in a Digital Accounts system? Why?”
+
+The failing answer:
+“Yes, to separate read and write databases and improve performance.”
+
+That response is superficial. In fintech, interviewers want to assess whether you understand the architectural impact and financial risk involved.
+
+What a Senior Software Engineer Should Explain
+
+Eventual Consistency and Financial Risk
+In financial systems with separate read and write models, the critical challenge is preventing the read side from becoming so outdated that it creates risk.
+Explain how events are propagated via Kafka or RabbitMQ, how delays can cause users to temporarily see inconsistent balances, and how the system tolerates and mitigates these states.
+This is fundamentally about resilience, fraud prevention, and controlled inconsistency.
+
+The Link to Event Sourcing
+CQRS reaches its full potential when combined with Event Sourcing.
+Commands do not directly mutate state; instead, they emit immutable events such as “TransferCompleted”.
+The read database becomes a projection of these events.
+This approach enables state reconstruction, simplifies audits, and reduces reconciliation complexity—critical in billing and payment systems.
+
+Context-Driven Application with DDD
+CQRS is not a global application pattern. It should be applied selectively where the domain requires different read and write models.
+In microservices with asymmetric load:
+
+A Statement/Transaction History service with massive read volume benefits greatly from CQRS.
+
+An Account Registration service with simple writes and limited reads does not justify the added complexity.
+
 ## Idempotency in Distributed Payment Systems
 
 In distributed systems, network failures and timeouts are expected.

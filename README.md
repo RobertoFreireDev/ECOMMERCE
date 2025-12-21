@@ -1,6 +1,48 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Database Sharding for Digital Accounts – Architecture and Risks
+
+Interview question:
+“If your database (PostgreSQL or Oracle) is reaching its scalability limits in a fintech system, how would you implement sharding for digital accounts—and what could go wrong?”
+
+What the Interviewer Is Really Evaluating
+
+The interviewer does not want to hear “I’ll just split the database.”
+They want to know whether you understand software architecture, data access patterns, and real operational risks.
+
+The Senior Software Engineer Answer
+
+The biggest mistake is not technical—it is business-related: choosing the wrong sharding key.
+
+Bad Sharding Key (The Disaster Scenario)
+
+Using Transaction ID as the sharding key.
+
+Queries that need all transactions for a single customer (billing, statements) must query all shards (fan-out queries).
+
+This destroys performance and severely impacts resilience.
+
+Correct Sharding Key (The Foundation)
+
+Using Customer ID / Account ID as the sharding key.
+
+All critical data for a customer (balance, transaction history, fraud signals) lives on the same shard.
+
+This enables fast, localized single-shard queries, which are essential for digital payments.
+
+The Load-Balancing Challenge
+
+Customer-based sharding introduces the risk of hot shards, where a small number of high-volume customers generate most of the traffic.
+
+A senior engineer must address:
+
+Hash-based sharding strategies
+
+Periodic rebalancing or resharding plans
+
+Capacity planning for uneven workloads
+
 ## Why Use Kafka Instead of Traditional Queues (SQS, RabbitMQ)?
 
 Interview question:

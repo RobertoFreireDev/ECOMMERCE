@@ -1,6 +1,42 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Preventing Overselling and Double Spending in Distributed Systems
+
+Interview question:
+“Two users try to buy the last ticket or withdraw the same balance at the same time. How do you prevent selling or spending what you don’t have?”
+
+The Beginner Answer (Critical Mistake)
+
+“I use synchronized on the Java method.”
+
+In a microservices architecture with multiple instances, this is a fatal error.
+synchronized only locks the local JVM thread—it does nothing to prevent concurrency issues across instances. Race conditions will still occur.
+
+The Expert Engineering Answer
+
+Concurrency control must be enforced at the database level (PostgreSQL / Oracle), where the data actually lives.
+
+1. Optimistic Locking (@Version)
+
+Best for: Low-conflict scenarios (e.g., profile updates).
+
+How it works:
+You assume collisions are rare. If they occur, the update fails and the application handles the exception.
+
+Benefits:
+Lightweight, scalable, and high-throughput.
+
+2. Pessimistic Locking (SELECT … FOR UPDATE)
+
+Mandatory for: Fintech and critical payment flows.
+
+How it works:
+When updating a balance, the database row is locked. No other transaction can read or write it until the current transaction completes.
+
+Benefits:
+Guarantees absolute consistency (ACID), even at the cost of some performance.
+
 ## Normalization vs. Denormalization in Real-Time Fraud Prevention
 
 Interview question:

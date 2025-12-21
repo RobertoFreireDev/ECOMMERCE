@@ -1,6 +1,33 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Why Use Kafka Instead of Traditional Queues (SQS, RabbitMQ)?
+
+Interview question:
+“Why would you use Kafka instead of a traditional queue like SQS or RabbitMQ?”
+
+The Answer That Kills Your Chances
+
+“Because Kafka is faster.”
+
+This is the worst possible answer.
+Technical interviews are not about raw speed—they are about architectural understanding.
+
+What a Mid-Level or Senior Engineer Should Explain
+
+Ordering Is Non-Negotiable in Financial Systems
+In digital payments, digital accounts, and any balance-related workflow, event ordering is critical.
+Kafka, as a distributed event log, guarantees ordering within a partition, preventing subtle and expensive inconsistencies.
+
+Replayability and Real Resilience
+When a microservice fails—or when events must be reprocessed for auditing, reconciliation, or bug fixes—Kafka allows consumers to re-read historical events.
+In contrast, SQS removes messages once they are consumed.
+In fintech, event replay is essential for fraud prevention and billing reconciliation.
+
+Scalability with Backpressure Control
+Kafka supports multiple independent consumers reading the same topic at their own pace.
+This enables true horizontal scalability and controlled backpressure in high-throughput cloud environments (AWS, Kubernetes, etc.).
+
 ## Fan-Out Messaging, Failure Isolation, and DLQs
 
 Interview question:

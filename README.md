@@ -1,6 +1,41 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## SOLID Principles in Fintech – Beyond “Clean Code”
+
+A senior engineer does not say SOLID exists just to “make code clean.”
+That answer shows memorization, not understanding.
+
+In fintech interviews, SOLID is evaluated by how it reduces risk, improves scalability, and increases resilience in real systems.
+
+The Statement That Disqualifies a Senior Candidate
+
+“The ‘S’ (Single Responsibility) means my class should do only one thing.”
+
+This is oversimplified and misleading.
+
+How a Software Architecture Specialist Understands SOLID
+S – Single Responsibility Principle
+
+A class should have only one reason to change.
+
+If a digital payments class changes both because of business rules and infrastructure concerns, it violates SRP.
+This increases CI/CD risk and makes deployments more fragile.
+
+O – Open/Closed Principle
+
+This is a resilience principle.
+
+Code should be open for extension (e.g., adding new fraud-prevention rules) but closed for modification.
+This minimizes regressions and stabilizes production systems (e.g., Java/Spring Boot services).
+
+D – Dependency Inversion Principle
+
+This is a core pillar of software architecture.
+
+High-level modules must depend on abstractions (interfaces), not concrete implementations.
+This allows swapping infrastructure components—such as databases (PostgreSQL ↔ Oracle) or Kafka clients—without rewriting business logic.
+
 ## Database Sharding for Digital Accounts – Architecture and Risks
 
 Interview question:

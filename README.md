@@ -1,6 +1,52 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Normalization vs. Denormalization in Real-Time Fraud Prevention
+
+Interview question:
+“Your fraud prevention system needs high performance to check a customer’s history in real time. Do you use normalization or denormalization?”
+
+The Engineering Answer That Stands Out
+Normalization (e.g., 3NF)
+
+Primary Focus: Data integrity and minimal redundancy (ACID guarantees).
+
+Where to Use in Fintech:
+Digital accounts and core payment systems (balances, critical transactions).
+This layer is the source of truth.
+
+Pros:
+
+Optimized for writes
+
+Minimizes inconsistency risk
+
+Technologies:
+PostgreSQL, Oracle (transactional systems)
+
+Denormalization (e.g., Event or History Tables)
+
+Primary Focus: Read performance and scalability.
+
+Where to Use in Fintech:
+Transaction history, event logs, reporting, and fraud detection systems.
+
+Pros:
+
+Optimized queries
+
+Fast access to historical data
+
+Technologies:
+NoSQL databases or optimized PostgreSQL tables (analytical systems)
+
+Specialist Insight
+
+In fintech, the correct answer is not “either one.”
+You use normalization for the source of truth (current monetary state) and denormalization for fast access to historical data used in fraud prevention.
+
+This is the fusion of transactional and analytical architectures.
+
 ## Observability in Fintech Microservices – Beyond Tools
 
 Anyone who has debugged a microservice running on Kubernetes in AWS knows that logs alone are not enough.

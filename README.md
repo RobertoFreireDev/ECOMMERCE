@@ -1,6 +1,39 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Using Chain of Responsibility for Transaction Validation
+
+Question:
+Can the Chain of Responsibility pattern be used to validate a transaction?
+
+Answer:
+Yes. It is one of the most elegant ways to organize fraud prevention and billing/payment validation logic in backend systems.
+
+What the Chain of Responsibility Pattern Solves
+
+Decoupling
+Adding a new validation rule (e.g., CPF block, daily transfer limit, fraud score check) does not require modifying existing validators.
+This follows the Open/Closed Principle (SOLID).
+
+Clear Orchestration
+The exact order of validations is explicitly defined.
+If any validation fails, the chain can be short-circuited, preventing unnecessary processing.
+
+Maintainability
+Each validator or microservice remains small, focused, and single-responsibility, whether validating boletos or digital payments.
+
+Practical Fintech Example
+
+A transaction validation chain might look like:
+
+Balance Validator
+
+Daily Limit Validator
+
+Risk / Fraud Validator (calling an external service)
+
+Transaction Execution
+
 ## SOLID Principles in Fintech – Beyond “Clean Code”
 
 A senior engineer does not say SOLID exists just to “make code clean.”

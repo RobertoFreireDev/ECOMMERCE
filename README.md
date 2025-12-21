@@ -36,7 +36,7 @@ This is a core pillar of software architecture.
 High-level modules must depend on abstractions (interfaces), not concrete implementations.
 This allows swapping infrastructure components—such as databases (PostgreSQL ↔ Oracle) or Kafka clients—without rewriting business logic.
 
-ISP - nterface Segregation Principle
+ISP - Interface Segregation Principle
 
 A “fat” interface forces client classes to depend on methods they do not need.
 

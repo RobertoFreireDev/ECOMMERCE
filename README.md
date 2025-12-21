@@ -36,6 +36,44 @@ This is a core pillar of software architecture.
 High-level modules must depend on abstractions (interfaces), not concrete implementations.
 This allows swapping infrastructure components—such as databases (PostgreSQL ↔ Oracle) or Kafka clients—without rewriting business logic.
 
+ISP - nterface Segregation Principle
+
+A “fat” interface forces client classes to depend on methods they do not need.
+
+In a digital payments system, this can mean a Billing Payments service becomes coupled to fraud prevention logic, even if it only needs two payment-related methods.
+
+More coupling directly leads to lower resilience, harder testing, and riskier deployments.
+
+Apply the Interface Segregation Principle (ISP) by splitting large interfaces into smaller, cohesive contracts, such as:
+
+PaymentProcessing
+
+FraudEvaluation
+
+BalanceQuery
+
+This approach:
+
+Improves test-driven development (TDD)
+
+Enables safe implementation swapping
+
+Preserves Liskov Substitution by keeping interfaces focused and predictable
+
+Architectural Impac
+
+ISP is not just about cleaner code—it is about software architecture and CI/CD.
+
+Segregated interfaces:
+
+Reinforce Single Responsibility across microservices
+
+Enable independent deployments
+
+Reduce blast radius of changes
+
+Improve system performance and scalability
+
 ## Database Sharding for Digital Accounts – Architecture and Risks
 
 Interview question:

@@ -1,6 +1,39 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Idempotency in Distributed Payment Systems
+
+In distributed systems, network failures and timeouts are expected.
+In fintech, the risk is critical: processing a debit event twice means real financial loss for the customer.
+
+This is why idempotency is a core pillar of resilient payment systems.
+
+The Problem (A Common Trap)
+
+By default, Kafka provides “At-Least-Once” delivery.
+If a consumer fails to commit its offset, the same message may be re-delivered.
+
+Without idempotent business logic, a single debit of $50 can become $100, breaking the integrity of digital accounts.
+
+The Expert Solution: Idempotent Processing
+
+Idempotency means executing the same operation multiple times while producing the same final result.
+
+How to implement it in the backend:
+
+Unique Idempotency Key
+Extract a globally unique identifier from the Kafka event or API header
+(e.g., paymentId, transferId).
+
+Processing Record
+Before executing any critical logic (e.g., balance debit, invoice or boleto issuance),
+check a dedicated store (PostgreSQL table or Redis cache) to see if the idempotency key has already been successfully processed.
+
+Conditional Execution
+
+If the key already exists → ignore the message
+
+If it does not exist → execute the business logic, persist the key, and commit the Kafka offset
 
 ## Duplicate Payment Reconciliation – Performance Considerations
 

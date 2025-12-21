@@ -1,6 +1,46 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Circuit Breaker in Fintech Systems – Beyond the Definition
+
+If a backend engineer says “a Circuit Breaker just stops calling a failing service”, the answer is technically correct—but architecturally shallow.
+
+In fintech and mission-critical systems, interviewers expect a deeper understanding of why the pattern exists and what it actually protects.
+
+What a Senior Fintech Engineer Must Understand
+
+Resource Protection (Most Overlooked Point)
+The Circuit Breaker does not exist to protect the failing service.
+Its primary purpose is to protect your own service from exhausting threads, connections, and throughput.
+This is how cascading failures are prevented in high-criticality systems.
+
+Realistic Fallback Strategies
+In payments and banking, fallback is not “return cached data” or fabricate alternative responses.
+Valid strategies include:
+
+Fail fast with clear errors
+
+Controlled degradation
+
+Asynchronous processing
+
+In regulated environments, consistency outweighs availability tricks.
+
+Non-Negotiable Observability
+Circuit state changes (open, half-open, closed) must generate metrics and alerts via tools like CloudWatch, Prometheus, or Grafana.
+Without telemetry, a Circuit Breaker becomes an invisible failure mechanism—and invisible failures bring systems down.
+
+A Circuit Breaker Alone Is Insufficient
+The pattern only works effectively when combined with:
+
+Well-defined timeouts
+
+Bulkheads (resource isolation)
+
+Rate limiting
+
+Resilience is a system of patterns, not a single one.
+
 ## Stop Reconciling. A Ledger Is the Only Architecture That Eliminates Financial Chaos
 
 The biggest engineering mistake in digital payment systems (PIX, boletos, wire transfers) is relying on traditional relational models to represent financial events.

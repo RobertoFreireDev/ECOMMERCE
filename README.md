@@ -1,6 +1,57 @@
 # Payment-System
 Designing a Payment System using Modular Monolith
 
+## Observability in Fintech Microservices – Beyond Tools
+
+Anyone who has debugged a microservice running on Kubernetes in AWS knows that logs alone are not enough.
+
+A common interview mistake is treating observability as a tooling problem (Prometheus, Grafana, Datadog).
+In senior-level fintech interviews, what matters is the software architecture behind observability.
+
+The Game-Changing Design Pattern: The Observability Pattern
+
+Observability is not about collecting data—it is about instrumenting code so the system can proactively answer three critical questions:
+
+1. Tracing
+
+Question: How did a digital payment transaction flow from the gateway to the database?
+
+Approach:
+Use Correlation IDs and distributed tracing (Jaeger, Zipkin) to track a PIX payment end-to-end across:
+
+Multiple microservices
+
+Kafka topics and consumers
+
+This enables full visibility into cross-service transaction lifecycles.
+
+2. Metrics
+
+Question: Where is the performance or scalability bottleneck?
+
+Approach:
+Monitor business-level metrics, not just infrastructure metrics:
+
+Boleto issuance success rate
+
+Fraud prevention API latency
+
+Payment authorization error rates
+
+Infrastructure metrics (CPU/RAM) are necessary but insufficient on their own.
+
+3. Logging
+
+Question: What exactly happened at the point of failure?
+
+Approach:
+
+Standardize logs in structured formats (JSON)
+
+Ensure every log entry includes the Correlation ID
+
+This makes logs searchable, traceable, and suitable for automated analysis.
+
 ## Circuit Breaker in Fintech Systems – Beyond the Definition
 
 If a backend engineer says “a Circuit Breaker just stops calling a failing service”, the answer is technically correct—but architecturally shallow.

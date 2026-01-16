@@ -2,6 +2,13 @@
 
 public static class ModulesRegistration
 {
+    public static void ConfigureApi(this IServiceCollection services)
+    {
+        services
+            .AddExceptionHandler<GlobalExceptionHandler>()
+            .AddProblemDetails();
+    }
+
     public static IMvcBuilder AddApplicationParts(this IMvcBuilder mvcBuilder)
     {
         return mvcBuilder

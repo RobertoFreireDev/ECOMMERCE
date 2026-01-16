@@ -1,4 +1,6 @@
-﻿global using Company.Ecommerce.Orders.Application.Dtos;
+﻿global using Microsoft.Extensions.Logging;
+
+global using Company.Ecommerce.Orders.Application.Dtos;
 global using Company.Ecommerce.Orders.Application.Services.Interfaces;
 
 global using Company.Ecommerce.Common;

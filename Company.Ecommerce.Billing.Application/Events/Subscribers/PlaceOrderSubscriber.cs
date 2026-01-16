@@ -1,12 +1,14 @@
 ﻿namespace Company.Ecommerce.Billing.Application.Events.Subscribers;
 
-public sealed class PlaceOrderSubscriber
+public sealed class PlaceOrderSubscriber(ILogger<PlaceOrderSubscriber> logger)
     : IDomainEventHandler<OrderPlacedEvent>
 {
     public async Task HandleAsync(
         OrderPlacedEvent domainEvent,
         CancellationToken cancellationToken)
     {
-        // create invoice
+        logger.LogInformation(
+            "Creating invoice for order {OrderId}",
+            domainEvent.OrderId);
     }
 }

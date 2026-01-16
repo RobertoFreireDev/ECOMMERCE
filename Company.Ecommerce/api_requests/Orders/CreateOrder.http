@@ -1,0 +1,13 @@
+﻿@host = https://localhost:7150
+
+### Create a new order from the customer's cart
+POST {{host}}/api/v1.0/orders
+Content-Type: application/json
+Accept: application/json
+
+{
+  "shippingAddressId": "11111111-1111-1111-1111-111111111111",
+  "billingAddressId": "22222222-2222-2222-2222-222222222222",
+  "paymentMethod": "CARD",
+  "couponCode": "DISCOUNT10"
+}

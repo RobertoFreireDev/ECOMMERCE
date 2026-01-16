@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Company.Ecommerce.Billing.API\Company.Ecommerce.Billing.API.csproj" />
+    <ProjectReference Include="..\Company.Ecommerce.Common\Company.Ecommerce.Common.csproj" />
     <ProjectReference Include="..\Company.Ecommerce.Orders.API\Company.Ecommerce.Orders.API.csproj" />
   </ItemGroup>
 

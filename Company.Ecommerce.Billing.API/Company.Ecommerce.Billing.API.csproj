@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Company.Ecommerce.Common\Company.Ecommerce.Common.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Company.Ecommerce.Billing.Application\Company.Ecommerce.Billing.Application.csproj" />
   </ItemGroup>
 
 </Project>

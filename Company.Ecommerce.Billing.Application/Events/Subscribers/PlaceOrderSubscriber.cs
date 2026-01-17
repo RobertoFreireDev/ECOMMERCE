@@ -10,6 +10,6 @@ public sealed class PlaceOrderSubscriber(ILogger<PlaceOrderSubscriber> logger)
             "Creating invoice for order {OrderId}",
             domainEvent.OrderId);
 
-        return false;
+        return true;
     }
 }

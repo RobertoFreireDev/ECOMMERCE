@@ -17,6 +17,11 @@ builder.Services.RegisterServices();
 
 var app = builder.Build();
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -6,8 +6,10 @@ public static class EventsRegistration
     {
         services.AddDbContext<EventsDbContext>(options =>
             options.UseSqlServer(
-                "Server=(localdb)\\MSSQLLocalDB;Database=EventsDb;Trusted_Connection=True;"
+                Environment.GetEnvironmentVariable("EVENTS_DB_CONNECTION")
+                    ?? "Server=db;Database=EventsDb;User Id=sa;Password=YourStrong!Passw0rd;"
             ));
+
 
         services.AddScoped<IEventDataRepository, EventDataRepository>();
         services.AddScoped<IEventPublisher, EventPublisher>();

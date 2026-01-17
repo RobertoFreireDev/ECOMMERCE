@@ -1,28 +1,24 @@
 ```mermaid
 flowchart TD
     Host["Host"]
-
     Common["Common"]
-
+    Events["Events"]
+    EventsDb["EventsDb"]
     BillingAPI["Billing.API"]
     BillingApp["Billing.Application"]
-
     OrdersAPI["Orders.API"]
     OrdersApp["Orders.Application"]
-
     CartAPI["ShoppingCart.API"]
 
     Host --> BillingAPI
     Host --> OrdersAPI
     Host --> CartAPI
-    Host --> Common
+    Host --> Events
 
     BillingAPI --> BillingApp
     OrdersAPI --> OrdersApp
 
-    BillingApp --> Common
-    OrdersApp --> Common
-
+    Events --> EventsDb
 ```
 
 # Project Structure

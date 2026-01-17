@@ -1,23 +1,33 @@
 ```mermaid
 flowchart TD
     Host["Host"]
-    Events["Events"]
-    EventsDb["EventsDb"]
-    BillingAPI["Billing.API"]
-    BillingApp["Billing.Application"]
-    OrdersAPI["Orders.API"]
-    OrdersApp["Orders.Application"]
-    CartAPI["ShoppingCart.API"]
+
+    subgraph Billing["Billing"]
+        BillingAPI["Billing.API"]
+        BillingApp["Billing.Application"]
+        BillingAPI --> BillingApp
+    end
+
+    subgraph Orders["Orders"]
+        OrdersAPI["Orders.API"]
+        OrdersApp["Orders.Application"]
+        OrdersAPI --> OrdersApp
+    end
+
+    subgraph ShoppingCart["ShoppingCart"]
+        CartAPI["ShoppingCart.API"]
+    end
+
+    subgraph EventsModule["Events"]
+        Events["Events"]
+        EventsDb["EventsDb"]
+        Events --> EventsDb
+    end
 
     Host --> BillingAPI
     Host --> OrdersAPI
     Host --> CartAPI
     Host --> Events
-
-    BillingAPI --> BillingApp
-    OrdersAPI --> OrdersApp
-
-    Events --> EventsDb
 ```
 
 # Project Structure

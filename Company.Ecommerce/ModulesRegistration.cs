@@ -2,13 +2,13 @@
 
 public static class ModulesRegistration
 {
-    public static void  ConfigureApi(this IServiceCollection services)
+    public static void ConfigureApi(this IServiceCollection services)
     {
         services
             .AddExceptionHandler<GlobalExceptionHandler>()
             .AddProblemDetails();
 
-        services.AddScoped<IEventPublisher, InMemoryEventPublisher>();
+        services.ConfigureEvents();
     }
 
     public static IMvcBuilder AddApplicationParts(this IMvcBuilder mvcBuilder)

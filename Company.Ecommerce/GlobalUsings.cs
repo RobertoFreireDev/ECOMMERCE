@@ -12,4 +12,4 @@ global using Company.Ecommerce.Billing.API;
 
 global using Company.Ecommerce.ShoppingCart.API;
 
-global using Company.Ecommerce.Common;
+global using Company.Ecommerce.Events;

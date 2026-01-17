@@ -2,12 +2,17 @@
 
 public interface IDomainEvent
 {
-    DateTime OccurredOn { get; }
+    public EventTypes EventType { get; }
 }
 
 public abstract record DomainEvent : IDomainEvent
 {
-    public DateTime OccurredOn { get; } = DateTime.UtcNow;
+    public EventTypes EventType { get; }
+
+    public DomainEvent(EventTypes eventType)
+    {
+        EventType = eventType;
+    }
 }
 
 public interface IDomainEventHandler<in TEvent>

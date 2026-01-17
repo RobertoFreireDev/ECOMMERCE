@@ -1,7 +1,6 @@
 ```mermaid
 flowchart TD
     Host["Host"]
-    Common["Common"]
     Events["Events"]
     EventsDb["EventsDb"]
     BillingAPI["Billing.API"]

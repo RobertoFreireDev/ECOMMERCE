@@ -1,8 +1,6 @@
 ```mermaid
 flowchart TD
-    WebApi["WebApi"]
-
-    Modules["Modules"]
+    Host["Host"]
 
     Common["Common"]
 
@@ -14,16 +12,15 @@ flowchart TD
 
     CartAPI["ShoppingCart.API"]
 
-    WebApi --> Modules
-
-    Modules --> BillingAPI
-    Modules --> OrdersAPI
-    Modules --> CartAPI
-    Modules --> Common
+    Host --> BillingAPI
+    Host --> OrdersAPI
+    Host --> CartAPI
+    Host --> Common
 
     BillingAPI --> BillingApp
     OrdersAPI --> OrdersApp
 
     BillingApp --> Common
     OrdersApp --> Common
+
 ```

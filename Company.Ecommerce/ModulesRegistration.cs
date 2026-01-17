@@ -1,4 +1,4 @@
-﻿namespace Company.Ecommerce.Modules;
+﻿namespace Company.Ecommerce.Host;
 
 public static class ModulesRegistration
 {

@@ -1,4 +1,4 @@
-﻿namespace Company.Ecommerce.Modules;
+﻿namespace Company.Ecommerce.Host;
 
 internal sealed class GlobalExceptionHandler(
     IProblemDetailsService problemDetailsService,

@@ -30,6 +30,9 @@ flowchart TD
     Host --> OrdersAPI
     Host --> CartAPI
     Host --> Events
+
+    style EventsModule fill:#f9f,stroke:#333,stroke-width:2px
+    style Modules fill:#cfc,stroke:#333,stroke-width:2px
 ```
 
 # Project Structure

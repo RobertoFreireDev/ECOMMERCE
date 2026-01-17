@@ -6,6 +6,10 @@ public interface IEventRepository<T> where T : Entity
     Task UpdateAsync(T entity);
     Task DeleteAsync(T entity);
     Task<T?> GetByIdAsync(Guid id);
+    Task<T?> GetTopAsync(
+        Expression<Func<T, bool>>? condition = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+        params Expression<Func<T, object>>[] includes);
 }
 
 public class EventRepository<T> : IEventRepository<T> where T : Entity
@@ -40,5 +44,29 @@ public class EventRepository<T> : IEventRepository<T> where T : Entity
     public async Task<T?> GetByIdAsync(Guid id)
     {
         return await _dbSet.FirstOrDefaultAsync(i => i.Id == id);
+    }
+
+    public async Task<T?> GetTopAsync(
+        Expression<Func<T, bool>>? condition = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+        params Expression<Func<T, object>>[] includes)
+    {
+        IQueryable<T> query = _dbSet.AsQueryable();
+
+        if (includes != null)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+        }
+
+        if (condition != null)
+            query = query.Where(condition);
+
+        if (orderBy != null)
+            query = orderBy(query);
+
+        return await query.FirstOrDefaultAsync();
     }
 }

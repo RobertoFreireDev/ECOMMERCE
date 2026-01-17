@@ -25,4 +25,6 @@ public interface IEventPublisher
 {
     Task PublishAsync<TEvent>(TEvent domainEvent)
         where TEvent : IDomainEvent;
+
+    Task ReplayEventAsync();
 }

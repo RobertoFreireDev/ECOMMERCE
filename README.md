@@ -2,20 +2,22 @@
 flowchart TD
     Host["Host"]
 
-    subgraph Billing["Billing"]
-        BillingAPI["Billing.API"]
-        BillingApp["Billing.Application"]
-        BillingAPI --> BillingApp
-    end
+    subgraph Modules["Modules"]
+        subgraph Billing["Billing"]
+            BillingAPI["Billing.API"]
+            BillingApp["Billing.Application"]
+            BillingAPI --> BillingApp
+        end
 
-    subgraph Orders["Orders"]
-        OrdersAPI["Orders.API"]
-        OrdersApp["Orders.Application"]
-        OrdersAPI --> OrdersApp
-    end
+        subgraph Orders["Orders"]
+            OrdersAPI["Orders.API"]
+            OrdersApp["Orders.Application"]
+            OrdersAPI --> OrdersApp
+        end
 
-    subgraph ShoppingCart["ShoppingCart"]
-        CartAPI["ShoppingCart.API"]
+        subgraph ShoppingCart["ShoppingCart"]
+            CartAPI["ShoppingCart.API"]
+        end
     end
 
     subgraph EventsModule["Events"]

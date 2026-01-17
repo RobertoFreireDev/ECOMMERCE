@@ -2,7 +2,7 @@
 
 public static class ModulesRegistration
 {
-    public static void ConfigureApi(this IServiceCollection services)
+    public static void  ConfigureApi(this IServiceCollection services)
     {
         services
             .AddExceptionHandler<GlobalExceptionHandler>()

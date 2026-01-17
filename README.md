@@ -65,6 +65,9 @@ flowchart TD
 
 ## Notes
 
+- Application running in visual studio or docker
+- Update database using scripts from \database\tables.sql
+
 Access database in visual studio:
 
 - server name: localhost,1433 

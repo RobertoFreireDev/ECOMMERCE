@@ -20,10 +20,10 @@ public static class ModulesRegistration
 
     public static void RegisterServices(this IServiceCollection services)
     {
+        services.RegisterShoppingCartServices();
+
         services.RegisterOrderServices();
 
         services.RegisterBillingSubscribers();
-
-        services.AddScoped<IShoppingCartAccessPoint, ShoppingCartAccessPoint>();
     }
 }

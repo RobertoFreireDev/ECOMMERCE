@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Ecommerce.Billing.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Ecommerce.Billing.API", "..\Company.Ecommerce.Billing.API\Company.Ecommerce.Billing.API.csproj", "{F6D6AC12-33C3-44B5-834B-0FAB50258C50}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShoppingCart", "ShoppingCart", "{297033BD-A9BC-4CDB-9CB0-85B72FA4B03E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Ecommerce.ShoppingCart.API", "..\Company.Ecommerce.ShoppingCart.Interface\Company.Ecommerce.ShoppingCart.API.csproj", "{EFC3B95C-1078-4D96-931B-766BFAA91BBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,10 @@ Global
 		{F6D6AC12-33C3-44B5-834B-0FAB50258C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6D6AC12-33C3-44B5-834B-0FAB50258C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6D6AC12-33C3-44B5-834B-0FAB50258C50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFC3B95C-1078-4D96-931B-766BFAA91BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFC3B95C-1078-4D96-931B-766BFAA91BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFC3B95C-1078-4D96-931B-766BFAA91BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFC3B95C-1078-4D96-931B-766BFAA91BBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +78,8 @@ Global
 		{11772582-155C-46D5-92B1-964B28C8FB5E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{09292062-595A-4EF7-9940-6AA5137186E9} = {11772582-155C-46D5-92B1-964B28C8FB5E}
 		{F6D6AC12-33C3-44B5-834B-0FAB50258C50} = {11772582-155C-46D5-92B1-964B28C8FB5E}
+		{297033BD-A9BC-4CDB-9CB0-85B72FA4B03E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{EFC3B95C-1078-4D96-931B-766BFAA91BBA} = {297033BD-A9BC-4CDB-9CB0-85B72FA4B03E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFBEE519-4FAD-4CB0-8813-9B567FB2BD55}

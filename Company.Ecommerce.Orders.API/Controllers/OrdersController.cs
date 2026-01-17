@@ -13,6 +13,8 @@ public sealed class OrdersController(IOrderService orderService) : ControllerBas
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> CreateOrder([FromBody] ProcessOrderRequest request, CancellationToken cancellationToken)
     {
-        return Ok(await orderService.ProcessAsync(request.ToDto(), cancellationToken));
+        // TO DO: Get customerid from cookies
+        var customerId = Guid.NewGuid();
+        return Ok(await orderService.ProcessAsync(request.ToDto(), customerId, cancellationToken));
     }
 }

@@ -2,5 +2,5 @@
 
 public interface IOrderService
 {
-    Task<Guid> ProcessAsync(ProcessOrderDto request, CancellationToken cancellationToken);
+    Task<Guid> ProcessAsync(ProcessOrderDto request, Guid customerId, CancellationToken cancellationToken);
 }

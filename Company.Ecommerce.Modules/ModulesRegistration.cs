@@ -23,5 +23,7 @@ public static class ModulesRegistration
         services.RegisterOrderServices();
 
         services.RegisterBillingSubscribers();
+
+        services.AddScoped<IShoppingCartAccessPoint, ShoppingCartAccessPoint>();
     }
 }

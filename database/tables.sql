@@ -6,6 +6,7 @@ IF NOT EXISTS (
 BEGIN
     CREATE DATABASE EventsDb;
 END;
+GO
 
 IF NOT EXISTS (
     SELECT 1
@@ -20,7 +21,47 @@ BEGIN
         OccurredOnUtc DATETIME2 NOT NULL
     );
 END;
+GO
 
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.tables
+    WHERE name = 'FailedEvents'
+)
+BEGIN
+    CREATE TABLE dbo.FailedEvents (
+        Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+        EventId UNIQUEIDENTIFIER NOT NULL,
+        RetryCount INT NOT NULL DEFAULT 0,
+        LastAttemptUtc DATETIME2 NULL,
+        CONSTRAINT FK_FailedEvents_Events FOREIGN KEY (EventId) REFERENCES dbo.Events(Id)
+    );
+END;
+GO
 
-SELECT *
-FROM dbo.Events;
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.tables
+    WHERE name = 'DeadLetterEvents'
+)
+BEGIN
+    CREATE TABLE dbo.DeadLetterEvents (
+        Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+        EventId UNIQUEIDENTIFIER NOT NULL,
+        ErrorMessage NVARCHAR(MAX) NOT NULL,
+        FailedOnUtc DATETIME2 NOT NULL,
+        CONSTRAINT FK_DeadLetterEvents_Events FOREIGN KEY (EventId) REFERENCES dbo.Events(Id)
+    );
+END;
+GO
+
+use EventsDb;
+
+SELECT * FROM dbo.Events;
+SELECT * FROM dbo.FailedEvents;
+SELECT * FROM dbo.DeadLetterEvents;
+
+--drop table DeadLetterEvents;
+--drop table FailedEvents;
+--drop table Events;
+--drop database EventsDb;

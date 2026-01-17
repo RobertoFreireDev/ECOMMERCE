@@ -18,11 +18,11 @@ public abstract record DomainEvent : IDomainEvent
 public interface IDomainEventHandler<in TEvent>
     where TEvent : IDomainEvent
 {
-    Task HandleAsync(TEvent domainEvent, CancellationToken cancellationToken);
+    Task<bool> HandleAsync(TEvent domainEvent);
 }
 
 public interface IEventPublisher
 {
-    Task PublishAsync<TEvent>(TEvent domainEvent, CancellationToken cancellationToken = default)
+    Task PublishAsync<TEvent>(TEvent domainEvent)
         where TEvent : IDomainEvent;
 }

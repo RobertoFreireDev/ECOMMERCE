@@ -41,7 +41,6 @@ flowchart TD
 
 - Serves as the entry point of the application.
 - Knows all module entry points (Module APIs) and invokes them to configure each module.
-- Configures shared services and middleware common to all modules, such as InMemoryEventPublisher and GlobalExceptionHandler.
 
 ## Common
 
@@ -62,3 +61,13 @@ flowchart TD
 - Each module has its own database.
 - Modules communicate with each other via asynchronous event messages or synchronous access points.
 - Modules do not bypass other bounded contexts to access databases or functionality directly.
+
+
+## Notes
+
+Access database in visual studio:
+
+- server name: localhost,1433 
+- Database=EventsDb
+- User Id=sa
+- Password=YourStrong!Passw0rd

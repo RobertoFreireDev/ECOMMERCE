@@ -1,6 +1,9 @@
 ﻿namespace Company.Ecommerce.Events;
 
-public sealed class EventPublisher(IServiceProvider serviceProvider, IEventDataRepository _repository, ILogger<EventPublisher> logger)
+public sealed class EventPublisher(
+    IServiceProvider serviceProvider, 
+    IEventRepository<EventData> _eventRepository,
+    IEventRepository<FailedEvent> _failedEventRepository)
     : IEventPublisher
 {
     JsonSerializerOptions Options = new()
@@ -14,35 +17,46 @@ public sealed class EventPublisher(IServiceProvider serviceProvider, IEventDataR
         }
     };
 
-    public async Task PublishAsync<TEvent>(
-        TEvent domainEvent,
-        CancellationToken cancellationToken = default)
+    public async Task PublishAsync<TEvent>(TEvent domainEvent)
         where TEvent : IDomainEvent
     {
-        string payload = string.Empty;
-
-        try
+        var eventData = new EventData()
         {
-            payload = JsonSerializer.Serialize(domainEvent, Options);
-            await _repository.AddAsync(new EventData()
-            {
-                Id = Guid.NewGuid(),
-                OccurredOnUtc = DateTime.UtcNow,
-                EventType = domainEvent.EventType,
-                Payload = payload,
-            }, cancellationToken);
+            Id = Guid.NewGuid(),
+            OccurredOnUtc = DateTime.UtcNow,
+            EventType = domainEvent.EventType,
+            Payload = JsonSerializer.Serialize(domainEvent, Options),
+        };
 
-            var handlers = serviceProvider.GetServices<IDomainEventHandler<TEvent>>();
+        await _eventRepository.AddAsync(eventData);
 
-            foreach (var handler in handlers)
+        var handlers = serviceProvider.GetServices<IDomainEventHandler<TEvent>>();
+
+        foreach (var handler in handlers)
+        {
+            try
             {
-                await handler.HandleAsync(domainEvent, cancellationToken);
+                var successResult = await handler.HandleAsync(domainEvent);
+
+                if (!successResult)
+                {
+                    CreateFailedEvent(eventData);
+                }
+            }
+            catch (Exception ex)
+            {
+                CreateFailedEvent(eventData);
             }
         }
-        catch (Exception ex)
+    }
+
+    public void CreateFailedEvent(EventData eventData)
+    {
+        _failedEventRepository.AddAsync(new FailedEvent()
         {
-            logger.LogError(ex, $"Error handling event: {payload}");
-            throw;
-        }
+            Id = Guid.NewGuid(),
+            EventId = eventData.Id,
+            Event = eventData,
+        });
     }
 }

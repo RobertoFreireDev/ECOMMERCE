@@ -20,7 +20,7 @@ flowchart TD
 
     subgraph EventsModule["Events"]
         Events["Events"]
-        EventsDb["EventsDb"]
+        EventsDb[(EventsDb)]
         Events --> EventsDb
     end
 

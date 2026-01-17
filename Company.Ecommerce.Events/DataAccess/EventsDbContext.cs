@@ -15,7 +15,6 @@ public class EventData : Entity
 public class FailedEvent : Entity
 {
     public Guid EventId { get; set; }
-    public int RetryCount { get; set; } = 0;
     public DateTime? LastAttemptUtc { get; set; }
     public EventData Event { get; set; } = null!;
 }
@@ -62,10 +61,6 @@ public sealed class EventsDbContext : DbContext
 
             entity.Property(x => x.EventId)
                   .IsRequired();
-
-            entity.Property(x => x.RetryCount)
-                  .IsRequired()
-                  .HasDefaultValue(0);
 
             entity.Property(x => x.LastAttemptUtc);
 

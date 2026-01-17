@@ -32,7 +32,6 @@ BEGIN
     CREATE TABLE dbo.FailedEvents (
         Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
         EventId UNIQUEIDENTIFIER NOT NULL,
-        RetryCount INT NOT NULL DEFAULT 0,
         LastAttemptUtc DATETIME2 NULL,
         CONSTRAINT FK_FailedEvents_Events FOREIGN KEY (EventId) REFERENCES dbo.Events(Id)
     );

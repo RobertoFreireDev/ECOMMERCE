@@ -1,5 +1,3 @@
-using System.Threading;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
@@ -25,7 +23,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    await app.ApplyOrdersMigrationsAsync();
+    await app.ApplyMigrationsAsync();
 }
 else
 {

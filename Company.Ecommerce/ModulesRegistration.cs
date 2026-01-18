@@ -2,6 +2,12 @@
 
 public static class ModulesRegistration
 {
+    public static async Task ApplyMigrationsAsync(
+        this IHost app)
+    {
+        await app.ApplyOrdersMigrationsAsync();
+    }
+
     public static void ConfigureApi(this IServiceCollection services)
     {
         services

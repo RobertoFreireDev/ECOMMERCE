@@ -2,37 +2,14 @@
 flowchart TD
     Host["Host"]
 
-    subgraph Modules["Modules"]
-        subgraph Billing["Billing"]
-            BillingAPI["Billing.API"]
-            BillingApp["Billing.Application"]
-            BillingAPI --> BillingApp
-        end
+    Orders["Orders"]
+    OrdersDb[(OrdersDb)]
+    Orders --> OrdersDb
 
-        subgraph Orders["Orders"]
-            OrdersAPI["Orders.API"]
-            OrdersApp["Orders.Application"]
-            OrdersAPI --> OrdersApp
-        end
+    ShoppingCart["ShoppingCart"]
 
-        subgraph ShoppingCart["ShoppingCart"]
-            CartAPI["ShoppingCart.API"]
-        end
-    end
-
-    subgraph EventsModule["Events"]
-        Events["Events"]
-        EventsDb[(EventsDb)]
-        Events --> EventsDb
-    end
-
-    Host --> BillingAPI
-    Host --> OrdersAPI
-    Host --> CartAPI
-    Host --> Events
-
-    style EventsModule fill:#f9f,stroke:#333,stroke-width:2px
-    style Modules fill:#cfc,stroke:#333,stroke-width:2px
+    Host --> Orders
+    Host --> ShoppingCart
 ```
 
 # Project Structure
@@ -42,13 +19,12 @@ flowchart TD
 - Serves as the entry point of the application.
 - Knows all module entry points (Module APIs) and invokes them to configure each module.
 
-## Common
+### Don't make asynchronous communication between modules
 
-- Contains DTOs and event classes used for cross-module communication via asynchronous event messages or synchronous access points.
 
-### Asynchronous event messages
+- A module that only exists to react asynchronously usually does NOT belong in the same modular monolith.
 
-- Fire-and-forget events that are published to an event bus and handled by other modules.
+ 
 
 ### Synchronous access points
 
@@ -57,9 +33,8 @@ flowchart TD
 
 ### Modules
 
-- Each module has its own API, Application, Domain, and Infrastructure layers/libraries.
 - Each module has its own database.
-- Modules communicate with each other via asynchronous event messages or synchronous access points.
+- Modules should make most of the classes internal to avoid unintended access from other modules.
 - Modules do not bypass other bounded contexts to access databases or functionality directly.
 
 

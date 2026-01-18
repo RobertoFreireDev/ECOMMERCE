@@ -16,9 +16,9 @@ public static class ModulesRegistration
             .AddShoppingCartControllers();
     }
 
-    public static void RegisterServices(this IServiceCollection services)
+    public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.RegisterOrderServices();
-        services.RegisterShoppingCartServices();
+        services.RegisterOrderServices(configuration);
+        services.RegisterShoppingCartServices(configuration);
     }
 }

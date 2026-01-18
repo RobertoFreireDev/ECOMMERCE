@@ -3,8 +3,8 @@
 public class ShoppingCartProduct
 {
     public Guid ProductId { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public decimal UnitPrice { get; set; }
+    public string Name { get; set; }
+    public int UnitPrice { get; set; }
     public int Quantity { get; set; }
 }
 

@@ -1,3 +1,5 @@
+using System.Threading;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
@@ -17,11 +19,15 @@ builder.Services.AddApiVersioning(options =>
     options.ReportApiVersions = true;
 });
 
-builder.Services.RegisterServices();
+builder.Services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    await app.ApplyOrdersMigrationsAsync();
+}
+else
 {
     app.UseHttpsRedirection();
 }

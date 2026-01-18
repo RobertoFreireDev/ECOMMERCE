@@ -19,14 +19,14 @@ public class ShoppingCartAccessPoint : IShoppingCartAccessPoint
                 {
                     ProductId = Guid.NewGuid(),
                     Name = "Keyboard",
-                    UnitPrice = 250.00m,
+                    UnitPrice = 25000,
                     Quantity = 1
                 },
                 new ShoppingCartProduct()
                 {
                     ProductId = Guid.NewGuid(),
                     Name = "Mouse",
-                    UnitPrice = 120.00m,
+                    UnitPrice = 12000,
                     Quantity = 2
                 }
             }

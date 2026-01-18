@@ -7,7 +7,7 @@ public static class ShoppingCartModuleRegistration
         return mvcBuilder.AddApplicationPart(typeof(ShoppingCartModuleRegistration).Assembly);
     }
 
-    public static void RegisterShoppingCartServices(this IServiceCollection services)
+    public static void RegisterShoppingCartServices(this IServiceCollection services, IConfiguration configuration)
     {
     }
 }

@@ -7,23 +7,16 @@ public static class ModulesRegistration
         services
             .AddExceptionHandler<GlobalExceptionHandler>()
             .AddProblemDetails();
-
-        services.ConfigureEvents();
     }
 
     public static IMvcBuilder AddApplicationParts(this IMvcBuilder mvcBuilder)
     {
         return mvcBuilder
-            .AddOrderControllers()
-            .AddBillingControllers();
+            .AddOrderControllers();
     }
 
     public static void RegisterServices(this IServiceCollection services)
     {
-        services.RegisterShoppingCartServices();
-
         services.RegisterOrderServices();
-
-        services.RegisterBillingSubscribers();
     }
 }

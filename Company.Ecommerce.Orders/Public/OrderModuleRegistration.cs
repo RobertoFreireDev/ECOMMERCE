@@ -1,4 +1,4 @@
-﻿namespace Company.Ecommerce.Orders.API;
+﻿namespace Company.Ecommerce.Orders.Public;
 
 public static class OrderModuleRegistration
 {

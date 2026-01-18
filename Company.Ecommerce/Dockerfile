@@ -9,13 +9,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 COPY ["Company.Ecommerce/Company.Ecommerce.Host.csproj", "Company.Ecommerce/"]
-COPY ["Company.Ecommerce.Common/Company.Ecommerce.Common.csproj", "Company.Ecommerce.Common/"]
-COPY ["Company.Ecommerce.Events/Company.Ecommerce.Events.csproj", "Company.Ecommerce.Events/"]
-COPY ["Company.Ecommerce.Orders.API/Company.Ecommerce.Orders.API.csproj", "Company.Ecommerce.Orders.API/"]
-COPY ["Company.Ecommerce.Orders.Application/Company.Ecommerce.Orders.Application.csproj", "Company.Ecommerce.Orders.Application/"]
-COPY ["Company.Ecommerce.Billing.API/Company.Ecommerce.Billing.API.csproj", "Company.Ecommerce.Billing.API/"]
-COPY ["Company.Ecommerce.Billing.Application/Company.Ecommerce.Billing.Application.csproj", "Company.Ecommerce.Billing.Application/"]
-COPY ["Company.Ecommerce.ShoppingCart.API/Company.Ecommerce.ShoppingCart.API.csproj", "Company.Ecommerce.ShoppingCart.API/"]
+COPY ["Company.Ecommerce.Orders/Company.Ecommerce.Orders.csproj", "Company.Ecommerce.Orders/"]
 
 RUN dotnet restore "Company.Ecommerce/Company.Ecommerce.Host.csproj"
 

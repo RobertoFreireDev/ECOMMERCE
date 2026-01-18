@@ -1,6 +1,6 @@
-﻿namespace Company.Ecommerce.Orders.API.DataContracts.Requests;
+﻿namespace Company.Ecommerce.Orders.Public.DataContracts.Requests;
 
-public sealed class ProcessOrderRequest
+public class ProcessOrderRequest
 {
     /// <summary>
     /// Shipping address selected by the customer
@@ -26,4 +26,3 @@ public sealed class ProcessOrderRequest
     [MaxLength(20)]
     public string? CouponCode { get; init; }
 }
-

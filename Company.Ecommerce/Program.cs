@@ -2,6 +2,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddControllers()
+    .ConfigureApplicationPartManager(apm =>
+    {
+        apm.FeatureProviders.Add(new InternalControllerFeatureProvider());
+    })
     .AddApplicationParts();
 
 builder.Services.ConfigureApi();
@@ -21,8 +25,6 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
 }
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

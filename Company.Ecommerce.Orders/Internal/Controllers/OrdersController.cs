@@ -1,9 +1,9 @@
-namespace Company.Ecommerce.Orders.API.Controllers;
+﻿namespace Company.Ecommerce.Orders.Internal.Controllers;
 
 [ApiController]
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/[controller]")]
-public sealed class OrdersController(IOrderService orderService) : ControllerBase
+internal class OrdersController(IOrderService orderService) : ControllerBase
 {
     /// <summary>
     /// Processes a new order from the customer's cart
@@ -15,6 +15,6 @@ public sealed class OrdersController(IOrderService orderService) : ControllerBas
     {
         // TO DO: Get customerid from cookies
         var customerId = Guid.NewGuid();
-        return Ok(await orderService.ProcessAsync(request.ToDto(), customerId, cancellationToken));
+        return Ok(await orderService.ProcessAsync(request, customerId, cancellationToken));
     }
 }

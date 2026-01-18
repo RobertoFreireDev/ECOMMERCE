@@ -11,11 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Company.Ecommerce.Billing.API\Company.Ecommerce.Billing.API.csproj" />
-    <ProjectReference Include="..\Company.Ecommerce.Common\Company.Ecommerce.Common.csproj" />
-    <ProjectReference Include="..\Company.Ecommerce.Events\Company.Ecommerce.Events.csproj" />
-    <ProjectReference Include="..\Company.Ecommerce.Orders.API\Company.Ecommerce.Orders.API.csproj" />
-    <ProjectReference Include="..\Company.Ecommerce.ShoppingCart.API\Company.Ecommerce.ShoppingCart.API.csproj" />
+    <ProjectReference Include="..\Company.Ecommerce.Orders\Company.Ecommerce.Orders.csproj" />
   </ItemGroup>
 
 </Project>

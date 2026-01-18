@@ -1,3 +1,9 @@
+# TO DO:
+
+- Add OAuth2 with PKCE authentication to the Host project
+- Add Login and request via Postman https://blog.postman.com/pkce-oauth-how-to/
+
+
 ```mermaid
 flowchart TD
     Host["Host"]

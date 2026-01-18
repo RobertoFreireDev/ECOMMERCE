@@ -10,6 +10,7 @@ WORKDIR /src
 
 COPY ["Company.Ecommerce/Company.Ecommerce.Host.csproj", "Company.Ecommerce/"]
 COPY ["Company.Ecommerce.Orders/Company.Ecommerce.Orders.csproj", "Company.Ecommerce.Orders/"]
+COPY ["Company.Ecommerce.ShoppingCart/Company.Ecommerce.ShoppingCart.csproj", "Company.Ecommerce.ShoppingCart/"]
 
 RUN dotnet restore "Company.Ecommerce/Company.Ecommerce.Host.csproj"
 

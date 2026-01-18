@@ -28,11 +28,15 @@ internal class BaseRepository<T> : IBaseRepository<T> where T : Entity
 
     public void Add(T entity)
     {
+        var now = DateTime.UtcNow;
+        entity.CreatedAt = now;
+        entity.LastModifiedAt = now;
         _dbSet.Add(entity);
     }
 
     public void Update(T entity)
     {
+        entity.LastModifiedAt = DateTime.UtcNow;
         _dbSet.Update(entity);
     }
 

@@ -9,7 +9,7 @@
       - "8081:8081"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - EVENTS_DB_CONNECTION=Server=db;Database=EventsDb;User Id=sa;Password=YourStrong!Passw0rd;Encrypt=false;
+      - ORDERS_DB_CONNECTION=Server=db;Database=EventsDb;User Id=sa;Password=YourStrong!Passw0rd;Encrypt=false;
     depends_on:
       - db
 

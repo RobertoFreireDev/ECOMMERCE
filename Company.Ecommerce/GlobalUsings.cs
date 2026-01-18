@@ -10,3 +10,5 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Company.Ecommerce.Host;
 
 global using Company.Ecommerce.Orders.Public;
+
+global using Company.Ecommerce.ShoppingCart.Public;

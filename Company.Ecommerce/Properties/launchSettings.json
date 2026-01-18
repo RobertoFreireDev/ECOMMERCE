@@ -8,7 +8,7 @@
       "applicationUrl": "https://localhost:8081;http://localhost:8080",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "EVENTS_DB_CONNECTION": "Server=(localdb)\\MSSQLLocalDB;Database=EventsDb;"
+        "ORDERS_DB_CONNECTION": "Server=(localdb)\\MSSQLLocalDB;Database=EventsDb;"
       }
     }
   }

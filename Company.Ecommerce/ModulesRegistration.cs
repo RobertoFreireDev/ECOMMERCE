@@ -12,11 +12,13 @@ public static class ModulesRegistration
     public static IMvcBuilder AddApplicationParts(this IMvcBuilder mvcBuilder)
     {
         return mvcBuilder
-            .AddOrderControllers();
+            .AddOrderControllers()
+            .AddShoppingCartControllers();
     }
 
     public static void RegisterServices(this IServiceCollection services)
     {
         services.RegisterOrderServices();
+        services.RegisterShoppingCartServices();
     }
 }

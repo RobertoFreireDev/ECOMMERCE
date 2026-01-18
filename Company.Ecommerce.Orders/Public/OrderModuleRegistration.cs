@@ -9,6 +9,9 @@ public static class OrderModuleRegistration
 
     public static void RegisterOrderServices(this IServiceCollection services)
     {
+        //services.AddDbContext<OrderDbContext>(options =>
+        //    options.UseSqlServer(Environment.GetEnvironmentVariable("ORDERS_DB_CONNECTION")));
+
         services.AddScoped<IOrderService, OrderService>();
     }
 }

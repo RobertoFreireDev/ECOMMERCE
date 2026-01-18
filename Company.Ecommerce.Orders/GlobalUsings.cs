@@ -8,3 +8,5 @@ global using Microsoft.Extensions.Logging;
 global using Company.Ecommerce.Orders.Internal.Controllers.DataContracts.Requests;
 global using Company.Ecommerce.Orders.Internal.Services.Interfaces;
 global using Company.Ecommerce.Orders.Internal.Services;
+
+global using Company.Ecommerce.ShoppingCart.Public;

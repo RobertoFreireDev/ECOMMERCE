@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Internal\DataAccess\" />
+    <ProjectReference Include="..\Company.Ecommerce.ShoppingCart\Company.Ecommerce.ShoppingCart.csproj" />
   </ItemGroup>
 
 </Project>

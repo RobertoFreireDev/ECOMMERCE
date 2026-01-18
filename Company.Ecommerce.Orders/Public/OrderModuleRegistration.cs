@@ -13,5 +13,6 @@ public static class OrderModuleRegistration
         //    options.UseSqlServer(Environment.GetEnvironmentVariable("ORDERS_DB_CONNECTION")));
 
         services.AddScoped<IOrderService, OrderService>();
+        services.AddScoped<IShoppingCartAccessPoint, ShoppingCartAccessPoint>();
     }
 }

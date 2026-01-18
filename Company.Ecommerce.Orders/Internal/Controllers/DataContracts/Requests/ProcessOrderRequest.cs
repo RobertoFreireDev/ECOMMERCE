@@ -1,6 +1,6 @@
-﻿namespace Company.Ecommerce.Orders.Public.DataContracts.Requests;
+﻿namespace Company.Ecommerce.Orders.Internal.Controllers.DataContracts.Requests;
 
-public class ProcessOrderRequest
+internal class ProcessOrderRequest
 {
     /// <summary>
     /// Shipping address selected by the customer

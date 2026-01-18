@@ -1,6 +1,4 @@
-﻿using Company.Ecommerce.Orders.Internal.Services.Interfaces;
-
-namespace Company.Ecommerce.Orders.Internal.Services;
+﻿namespace Company.Ecommerce.Orders.Internal.Services;
 
 internal class OrderService(ILogger<OrderService> logger) : IOrderService
 {

@@ -19,10 +19,11 @@ public static class OrderModuleRegistration
 
     public static void RegisterOrderServices(this IServiceCollection services, IConfiguration configuration)
     {
+        
         var connectionString =
-            configuration.GetConnectionString("ORDERS_DB_CONNECTION")
-            ?? throw new InvalidOperationException(
-                "Connection string 'ORDERS_DB_CONNECTION' not found.");
+            Environment.GetEnvironmentVariable("ORDERS_DB_CONNECTION") ??
+            configuration.GetConnectionString("ORDERS_DB_CONNECTION") ?? 
+                throw new InvalidOperationException("Connection string 'ORDERS_DB_CONNECTION' not found.");
 
         services.AddDbContext<OrdersDbContext>(options =>
             options.UseSqlServer(connectionString));

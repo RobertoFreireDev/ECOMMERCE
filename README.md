@@ -1,8 +1,12 @@
 # TO DO:
 
-- Add OAuth2 with PKCE authentication to the Host project
-- Add Login and request via Postman https://blog.postman.com/pkce-oauth-how-to/
-
+- Separate domain models from data models
+- Configure Keycloak with realms, clients, roles, and users
+- Create the front end and implement user authentication
+- Add RabbitMQ
+- Create an “Order Created” event and fan it out to the billing and email modules
+- Implement an outbox pattern to handle RabbitMQ downtime
+- Handle consumer failures and ensure idempotency
 
 ```mermaid
 flowchart TD

@@ -1,5 +1,7 @@
 # TO DO:
 
+- Change SqlServer to postgres
+- Add Nginx
 - Separate domain models from data models
 - Configure Keycloak with realms, clients, roles, and users
 - Create the front end and implement user authentication

@@ -1,12 +1,13 @@
 # TO DO:
 
+- Add open telemetry https://tiagotartari.net/dotnet-como-analisar-e-interpretar-as-metricas-de-runtime-do-dotnet.html
 - Change SqlServer to postgres
 - Add Nginx
 - Separate domain models from data models
 - Configure Keycloak with realms, clients, roles, and users
 - Create the front end and implement user authentication
 - Add RabbitMQ
-- Create an “Order Created” event and fan it out to the billing and email modules
+- Create an Order Created event and fan it out to the billing and email modules
 - Implement an outbox pattern to handle RabbitMQ downtime
 - Handle consumer failures and ensure idempotency
 
